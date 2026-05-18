@@ -57,3 +57,28 @@ const styles = {
         cursor: "pointer",
     },
 };
+
+export default function Flashcard({ card, onEdit, onDelete }) {
+    const [showAnswer, setShowAnswer] = useState(false);
+
+    return (
+        <div style={styles.card}>
+            <p style={styles.questionDiv}>{card.question}</p>
+            <button
+                style={styles.showHideBtn}
+                onClick={() => setShowAnswer(!showAnswer)}
+            >
+                Show / Hide Answer
+                </button>
+            {showAnswer && <p style={styles.answerDiv}>{card.answer}</p>}
+            <div style={styles.buttonsCon}>
+                <button style={styles.editBtn} onClick={() => onEdit(card)}>
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                </button>
+                <button style={styles.deleteBtn} onClick={() => onDelete(card.id)}>
+                    <FontAwesomeIcon icon={faTrashCan} />
+                </button>
+            </div>
+        </div>
+    );
+}
