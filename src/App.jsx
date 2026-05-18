@@ -72,7 +72,7 @@ export default function App() {
     return (
         <div style={styles.container}>
             <div style={styles.topBar}>
-                <h1 style={styles.title}>Flashcards</h1>
+                <h1 style={styles.title}>📇 Flashcards</h1>
                 <button style={styles.addBtn} onClick={() => {setEditCard(null);setShowForm(true);}}>
                     + Add Flashcard
                 </button>
