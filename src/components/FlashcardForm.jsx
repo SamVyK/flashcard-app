@@ -69,5 +69,69 @@ const styles = {
     },
 };
 
+export default function FlashcardForm({ onSave, onClose, editCard }) {
+    const [question, setQuestion] = useState("");
+    const [answer, setAnswer] = useState("");
+    const [error, setError] = useState(false);
 
+    useEffect(() => {
+        if (editCard) {
+            setQuestion(editCard.question);
+            setAnswer(editCard.answer);
+        } else {
+            setQuestion("");
+            setAnswer("");
+        }
+    }, [editCard]);
+
+    const handleSave = () => {
+        if (!question.trim() === "" || !answer.trim() === "") {
+            setError(true);
+            return;
+        }
+        onSave({ question: question.trim(), answer: answer.trim() });
+        setQuestion("");
+        setAnswer("");
+        setError(false);
+    };
     
+    return createPortal(
+        <div style={styles.overlay}>
+            <div style={styles.modal}>
+                <h2 style={styles.title}>
+                    {editCard ? "Edit Flashcard" : "Add Flashcard"}
+                </h2>
+                <div style={styles.topRow}>
+                    <div>
+                        {error && (
+                            <span style={styles.error}>
+                                Both fields are required!
+                            </span>
+                        )}
+                    </div>
+                    <button style={styles.closeBtn} onClick={onClose}>
+                        <FontAwesomeIcon icon={faXmark} />
+                    </button>
+                </div>
+                <label>Question:</label>
+                <textarea
+                    rows={2}
+                    placeholder="Enter the question here..."
+                    value={question}
+                    onChange={(e) => setQuestion(e.target.value)}
+                />
+                <label>Answer:</label>
+                <textarea
+                    rows={4}
+                    placeholder="Enter the answer here..."
+                    value={answer}
+                    onChange={(e) => setAnswer(e.target.value)}
+                />
+                <button style={styles.saveBtn} onClick={handleSave}>
+                    Save
+                </button>
+            </div>
+        </div>,
+        document.body
+    );
+}   
