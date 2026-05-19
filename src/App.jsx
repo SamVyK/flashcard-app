@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import Flashcard from "./components/Flashcard";
 import FlashcardForm from "./components/FlashcardForm";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Admin from "./pages/Admin";
 import "./index.css";
 
 const API = "http://127.0.0.1:8000";
@@ -17,11 +20,23 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "1.2em 1em",
+    flexWrap: "wrap",
+    gap: "1em",
   },
   title: {
     fontSize: "1.8em",
     fontWeight: 600,
     color: "#363d55",
+  },
+  rightBar: {
+    display: "flex",
+    gap: "0.8em",
+    alignItems: "center",
+    flexWrap: "wrap",
+  },
+  welcomeText: {
+    color: "#414a67",
+    fontSize: "0.95em",
   },
   addBtn: {
     fontSize: "1em",
@@ -32,6 +47,37 @@ const styles = {
     borderRadius: "0.4em",
     fontFamily: "Poppins, sans-serif",
     cursor: "pointer",
+  },
+  adminBtn: {
+    fontSize: "1em",
+    backgroundColor: "#363d55",
+    color: "#ffffff",
+    padding: "0.8em 1.2em",
+    fontWeight: 500,
+    borderRadius: "0.4em",
+    fontFamily: "Poppins, sans-serif",
+    cursor: "pointer",
+  },
+  logoutBtn: {
+    fontSize: "1em",
+    backgroundColor: "#ff5353",
+    color: "#ffffff",
+    padding: "0.8em 1.2em",
+    fontWeight: 500,
+    borderRadius: "0.4em",
+    fontFamily: "Poppins, sans-serif",
+    cursor: "pointer",
+  },
+  searchBar: {
+    width: "100%",
+    padding: "0.75em 1em",
+    border: "1px solid #d0d0d0",
+    borderRadius: "0.4em",
+    fontSize: "1em",
+    fontFamily: "Poppins, sans-serif",
+    outline: "none",
+    color: "#414a67",
+    marginBottom: "1.5em",
   },
   grid: {
     display: "grid",
