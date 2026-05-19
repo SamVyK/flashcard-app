@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { width } from "@fortawesome/free-solid-svg-icons/fa0";
 
 const styles = {
     card: {
@@ -58,7 +57,7 @@ const styles = {
     },
 };
 
-export default function Flashcard({ card, onEdit, onDelete }) {
+export default function Flashcard({ card, onEdit, onDelete, onView }) {
     const [showAnswer, setShowAnswer] = useState(false);
 
     return (
@@ -66,7 +65,10 @@ export default function Flashcard({ card, onEdit, onDelete }) {
             <p style={styles.questionDiv}>{card.question}</p>
             <button
                 style={styles.showHideBtn}
-                onClick={() => setShowAnswer(!showAnswer)}
+                onClick={() => {
+                    setShowAnswer(!showAnswer);
+                    if (!showAnswer) onView(card.id);
+                }}
             >
                 Show / Hide Answer
                 </button>
