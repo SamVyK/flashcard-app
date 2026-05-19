@@ -9,7 +9,7 @@ const styles = {
     justifyContent: "center",
     backgroundColor: "#fff8f0",
   },
-    cards: {
+    card: {
         backgroundColor: "#ffffff",
         padding: "3em 2.5em",
         borderRadius: "0.8em",
@@ -108,7 +108,7 @@ export default function Login({ onLogin, onGoRegister }) {
 
     return (
         <div style={styles.container}>
-            <div style={styles.cards}>
+            <div style={styles.card}>
                 <h1 style={styles.title}>📇 Flashcard App</h1>
                 {error && <p style={styles.error}>{error}</p>}
                 <input
