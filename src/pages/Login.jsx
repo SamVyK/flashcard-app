@@ -1,4 +1,3 @@
-import { text } from "@fortawesome/fontawesome-svg-core";
 import { useState } from "react";
 const API = "http://127.0.0.1:8000";
 
@@ -70,5 +69,76 @@ const styles = {
         fontSize: "0.9em",
     },
 };
+
+export default function Login({ onLogin, onGoRegister }) {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const handleLogin = async () => {
+        if (!username || !password) {
+            setError("Please enter both username and password.");
+            return;
+        }
+        setLoading(true);
+        setError("");
+        try {
+            const formData = new URLSearchParams();
+            formData.append("username", username);
+            formData.append("password", password);
+
+            const res = await fetch(`${API}/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: formData,
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                setError(data.detail || "Login failed.");
+                return;
+            }
+            onLogin(data);
+        } catch (err) {
+            setError("Could not connect to server.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div style={styles.container}>
+            <div style={styles.cards}>
+                <h1 style={styles.title}>📇 Flashcard App</h1>
+                {error && <p style={styles.error}>{error}</p>}
+                <input
+                    style={styles.input}
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+                <input
+                    style={styles.input}
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+                />
+                <button style={styles.btn} onClick={handleLogin} disabled={loading}>
+                    {loading ? "Logging in..." : "Login"}
+                </button>
+                <p style={styles.link}>
+                    Don't have an account?{" "}
+                    <button style={styles.linkBtn} onClick={onGoRegister}>
+                        Register here
+                    </button>
+                </p>
+            </div>
+        </div>
+    );
+}
+            
 
 
