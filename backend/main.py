@@ -6,6 +6,10 @@ import mysql.connector
 from datetime import datetime, timedelta, timezone
 from jose import JWTError, jwt
 from passlib.context import CryptContext
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = FastAPI()
 
@@ -19,7 +23,7 @@ app.add_middleware(
 )
 
 #JWT Config
-SECRET_KEY = "flashcard_secret_key_2026"
+SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
@@ -32,7 +36,7 @@ def get_db():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Samn0480$",
+        password=os.getenv("DB_PASSWORD"),
         database="flashcard_app"
     )
 
