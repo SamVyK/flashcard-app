@@ -77,4 +77,119 @@ const styles = {
     },
 };
 
+export default function Admin({ token, onLogout, onBack }) {
+    const [users, setUsers] = useState([]);
+    const [history, setHistory] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const [usersRes, historyRes] = await Promise.all([
+                    fetch(`${API}/admin/users`, {
+                        headers: { Authorization: `Bearer ${token}` },
+                    }),
+                    fetch(`${API}/admin/history`, {
+                        headers: { Authorization: `Bearer ${token}` },
+                    }),
+                ]);
+                const usersData = await usersRes.json();
+                const historyData = await historyRes.json();
+                setUsers(usersData);
+                setHistory(historyData);
+            } catch (err) {
+                console.error("Error fetching admin data:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, [token]);
+
+    if (loading) return <p style={{ textAlign: "center", marginTop: "4em", color: "#f5a623" }}>Loading...</p>;
+
+    return (
+        <div style={styles.container}>
+            <div style={styles.topBar}>
+                <h1 style={styles.title}>Admin Dashboard</h1>
+                <div style={{ display: "flex", gap: "1em" }}>
+                    <button style={styles.backBtn} onClick={onBack}>
+                        ← Back
+                    </button>
+                    <button style={styles.logoutBtn} onClick={onLogout}>
+                        Logout
+                    </button>
+                </div>
+            </div>
+
+            {/* Users Table */}
+            <div style={styles.section}>
+                <h2 style={styles.sectionTitle}>All Users ({users.length})</h2>
+                <table style={styles.table}>
+                    <thead>
+                        <tr>
+                            <th style={styles.th}>ID</th>
+                            <th style={styles.th}>Username</th>
+                            <th style={styles.th}>Email</th>
+                            <th style={styles.th}>Admin</th>
+                            <th style={styles.th}>Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.length === 0 ? (
+                            <tr><td colSpan="5" style={styles.empty}>No users found</td></tr>
+                        ) : (
+                            users.map((user) => (
+                                <tr key={user.id}>
+                                    <td style={styles.td}>{user.id}</td>
+                                    <td style={styles.td}>{user.username}</td>
+                                    <td style={styles.td}>{user.email}</td>
+                                    <td style={styles.td}>{user.is_admin ? "✅ Yes" : "❌ No"}</td>
+                                    <td style={styles.td}>{new Date(user.created_at).toLocaleDateString()}</td>
+                                </tr>
+                            ))
+                        )}
+                    </tbody>
+                </table>
+            </div>
+
+            {/* History Table */}
+            <div style={styles.section}>
+                <h2 style={styles.sectionTitle}>View History ({history.length})</h2>
+                <table style={styles.table}>
+                    <thead>
+                        <tr>
+                            <th style={styles.th}>Username</th>
+                            <th style={styles.th}>Question Viewed</th>
+                            <th style={styles.th}>Viewed At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {history.length === 0 ? (
+                            <tr><td colSpan="3" style={styles.empty}>No history yet</td></tr>
+                        ) : (
+                            history.map((item, index) => (
+                                <tr key={index}>
+                                    <td style={styles.td}>{item.username}</td>
+                                    <td style={styles.td}>{item.question}</td>
+                                    <td style={styles.td}>{new Date(item.viewed_at).toLocaleString()}</td>
+                                </tr>
+                            ))
+                        )}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+}
+                                
+
+
+
+                
+
+
+                
+
+
 
