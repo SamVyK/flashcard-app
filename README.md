@@ -18,13 +18,15 @@ users can create, view, edit, and delete flashcards to help with study
 - Fast and responsive **Single Page Application (SPA)**
 
 # tech stack
-|Layer            | Used                                    |
-|Frontend         | React + Vite                            |
-|Backend          | FastAPI (Python)                        |
-|Database         | MySQL                                   |
-|Authentication   | JWT (python-jose)                       |
-|Password Hashing | bcrypt (passlib)                        |
-|Styling          | CSS (Poppins font, yellow/orange theme) |
+
+| Layer            | Technology                              |
+|------------------|-----------------------------------------|
+| Frontend         | React + Vite                            |
+| Backend          | FastAPI (Python)                        |
+| Datebase         | MySQL                                   |
+| Authentication   | JWT (python-jose)                       |
+| Password Hashing | bcrypt (passlib)                        |
+| Styling          | CSS (Poppins font, yellow/orange theme) |
 
 # running code
 ### 1. Database Setup
@@ -199,15 +201,15 @@ This assignment was done individual **Samnang Vyvath Khun** (Student ID: 2459482
 
 All files I have written:
 
-|File                                |Description                            |
-| `src/App.jsx`                      | Main app routing and state management |
-| `src/components/Flashcard.jsx`     | Flashcard display component           |
-| `src/components/FlashcardForm.jsx` | Add/Edit modal form                   |
-| `src/pages/Login.jsx`              | Login page                            |
-| `src/pages/Register.jsx`           | Registration page                     |
-| `src/pages/Admin.jsx`              | Admin dashboard                       |
-| `backend/main.py`                  | FastAPI backend with all routes       |
-| `database/*.sql`                   | Database schema and setup             |
+File & Description                            
+- `src/App.jsx` - Main app routing and state management 
+- `src/components/Flashcard.jsx` - Flashcard display component           
+- `src/components/FlashcardForm.jsx` - Add/Edit modal form                   
+- `src/pages/Login.jsx` - Login page                            
+- `src/pages/Register.jsx` - Registration page                     
+- `src/pages/Admin.jsx` - Admin dashboard                       
+- `backend/main.py` - FastAPI backend with all routes       
+- `database/*.sql` - Database schema and setup             
 
 ---
 
