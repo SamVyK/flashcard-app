@@ -135,38 +135,38 @@ UPDATE users SET is_admin = TRUE WHERE username = '';
 ## Folder Structure
 
 flashcard-app/
-├── backend/
-│   ├── main.py                 # FastAPI backend with all routes
-│   ├── .env                    # Environment variables (not in GitHub)
-│   └── .gitignore              # Hides .env from GitHub
-├── database/
-│   ├── flashcard_app.sql       # Full database export
-│   ├── create_tables.sql       # Table creation scripts
-│   ├── alter_flashcards.sql    # Alter flashcards table
-│   ├── set_admin.sql           # Set admin user script
-│   └── check_users.sql         # Check users query
-├── node_modules
-├── public/
-├── src/
-│   ├── assests/
-│   ├── components/
-│   │   ├── Flashcard.jsx       # Individual flashcard component
-│   │   └── FlashcardForm.jsx   # Add/Edit modal form (React Portal)
-│   ├── pages/
-│   │   ├── Login.jsx           # Login page
-│   │   ├── Register.jsx        # Registration page
-│   │   └── Admin.jsx           # Admin dashboard
-│   ├── App.jsx                 # Main app with routing and state
-│   ├── index.css               # Global styles
-│   └── main.jsx                # React entry point
-├── .gitattributes
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package-lock.json
-├── package.json
-├── README.md
-└── vite.config.js
+|-backend/
+|  |-main.py                 # FastAPI backend with all routes
+|  |-.env                    # Environment variables (not in GitHub)
+|  |-.gitignore              # Hides .env from GitHub
+|-database/
+|  |-flashcard_app.sql       # Full database export
+|  |-create_tables.sql       # Table creation scripts
+|  |-alter_flashcards.sql    # Alter flashcards table
+|  |-set_admin.sql           # Set admin user script
+|  |-check_users.sql         # Check users query
+|-node_modules
+|-public/
+|-src/
+|  |-assests/
+|  |- components/
+|  |   |-Flashcard.jsx       # Individual flashcard component
+|  |   |-FlashcardForm.jsx   # Add/Edit modal form (React Portal)
+|  |- pages/
+|  |   |-Login.jsx           # Login page
+|  |   |-Register.jsx        # Registration page
+|  |   |-Admin.jsx           # Admin dashboard
+|  |-App.jsx                 # Main app with routing and state
+|  |-index.css               # Global styles
+|  |-main.jsx                # React entry point
+|-.gitattributes
+|-.gitignore
+|-eslint.config.js
+|-index.html
+|-package-lock.json
+|-package.json
+|-README.md
+|-vite.config.js
 
 ---
 
