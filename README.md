@@ -1,10 +1,11 @@
-# flashcard-app
-flashcard app developed with React + Vite, FastAPI, and MySQL
+# Flashcard-app
+Flashcard app developed with React + Vite, FastAPI, and MySQL
 
-# learning flashcards
-users can create, view, edit, and delete flashcards to help with study
+# Learning flashcards
+My app allows users to register, login, and manage their own personalised flashcards to help with study and memorization. Each flashcard contains a question and an answer that can be revealed or hidden on demand. An admin can view all registered users and their learning history.
 
-# features 
+
+# Features 
 - **User Registration & Login** with JWT authentication and bcrypt password hashing
 - **Create** flashcards with a question and answer
 - **View** all flashcards in a responsive 3-column grid layout
@@ -17,7 +18,7 @@ users can create, view, edit, and delete flashcards to help with study
 - All data persisted in a **MySQL database**
 - Fast and responsive **Single Page Application (SPA)**
 
-# tech stack
+# Tech stack
 
 | Layer            | Technology                              |
 |------------------|-----------------------------------------|
@@ -28,7 +29,7 @@ users can create, view, edit, and delete flashcards to help with study
 | Password Hashing | bcrypt (passlib)                        |
 | Styling          | CSS (Poppins font, yellow/orange theme) |
 
-# running code
+# Running code
 ### 1. Database Setup
 - Open **MySQL Workbench**
 - Run the following SQL:
