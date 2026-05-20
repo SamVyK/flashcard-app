@@ -201,15 +201,16 @@ This assignment was done individual **Samnang Vyvath Khun** (Student ID: 2459482
 
 All files I have written:
 
-File & Description                            
-- `src/App.jsx` - Main app routing and state management 
-- `src/components/Flashcard.jsx` - Flashcard display component           
-- `src/components/FlashcardForm.jsx` - Add/Edit modal form                   
-- `src/pages/Login.jsx` - Login page                            
-- `src/pages/Register.jsx` - Registration page                     
-- `src/pages/Admin.jsx` - Admin dashboard                       
-- `backend/main.py` - FastAPI backend with all routes       
-- `database/*.sql` - Database schema and setup             
+| File                               | Description                           |
+|------------------------------------|---------------------------------------|
+| `src/App.jsx`                      | Main app routing and state management |
+| `src/components/Flashcard.jsx`     | Flashcard display component           |
+| `src/components/FlashcardForm.jsx` | Add/Edit modal form                   |
+| `src/pages/Login.jsx`              | Login page                            |
+| `src/pages/Register.jsx`           | Registration page                     |
+| `src/pages/Admin.jsx`              | Admin dashboard                       |
+| `backend/main.py`                  | FastAPI backend with all routes       |
+| `database/*.sql`                   | Database schema and setup             |            
 
 ---
 
